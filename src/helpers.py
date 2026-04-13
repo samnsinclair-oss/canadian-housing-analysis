@@ -24,3 +24,21 @@ def drop_metadata_columns(df):
         "Terminated", "Decimals"]
     df = df.drop(columns = columns_to_drop, errors="ignore")
     return df
+
+def rename_columns(df):
+    """Rename columns to simpler names
+    Parameters:
+        df : A pandas Dataframe
+    Returns: 
+        Dataframe with renamed columns
+    """
+    df = df.copy()
+    df = df.rename(columns = {
+        "Ref Date": "Year",
+        "Geo": "Region",
+        "Tenure Including First-Time Homebuyer And Social And Affordable Housing Status": "Tenure",
+        "Acceptable Housing": "Housing Status",
+        "Value": "Percentage"
+    })
+    return df
+    
