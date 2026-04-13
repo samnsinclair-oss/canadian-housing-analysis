@@ -62,4 +62,24 @@ def add_tenure_group(df):
     })
 
     return df
-    
+
+def simplify_tenure(df):
+    """Shorten tenure labels while keeping important meaning.
+        Parameters:
+            df: A pandas DataFrame
+        Returns:
+            DataFrame with a simplified tenure column.
+    """
+    df = df.copy()
+
+    df["Tenure"] = df["Tenure"].replace({
+        "Total, by tenure": "Total",
+        "Owner household": "Owner",
+        "Owner household, first-time homebuyer": "Owner (First-time)",
+        "Owner household, not first-time homebuyer": "Owner (Not first-time)",
+        "Renter household": "Renter",
+        "Renter not in social and affordable housing": "Renter (Non-social)",
+        "Renter in social and affordable housing": "Renter (Social)"
+    })
+
+    return df
