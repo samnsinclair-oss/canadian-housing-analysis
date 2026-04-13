@@ -41,4 +41,19 @@ def rename_columns(df):
         "Value": "Percentage"
     })
     return df
+
+def simplify_tenure(df):
+    """Simplify tenure values
+    Parameters:
+        df: A pandas Dataframe
+    Returns:
+        Dataframe with simplified tenure categories
+    """
+    df = df.copy()
+    df["Tenure"] = df["Tenure"].replace({
+        "Total, By Tenure": "Total",
+        "Owner Household": "Owner",
+        "Renter Household": "Renter"
+    })
+    return df
     
