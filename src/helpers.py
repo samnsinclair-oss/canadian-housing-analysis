@@ -42,18 +42,24 @@ def rename_columns(df):
     })
     return df
 
-def simplify_tenure(df):
-    """Simplify tenure values
-    Parameters:
-        df: A pandas Dataframe
-    Returns:
-        Dataframe with simplified tenure categories
+def add_tenure_group(df):
+    """Create a simplified tenure group column.
+        Parameters:
+            df: A pandas DataFrame
+        Returns:
+            DataFrame with a new simplified tenure group column.
     """
     df = df.copy()
-    df["Tenure"] = df["Tenure"].replace({
-        "Total, By Tenure": "Total",
-        "Owner Household": "Owner",
-        "Renter Household": "Renter"
+
+    df["Tenure Group"] = df["Tenure"].replace({
+        "Total, by tenure": "Total",
+        "Owner household": "Owner",
+        "Owner household, first-time homebuyer": "Owner",
+        "Owner household, not first-time homebuyer": "Owner",
+        "Renter household": "Renter",
+        "Renter not in social and affordable housing": "Renter",
+        "Renter in social and affordable housing": "Renter"
     })
+
     return df
     
