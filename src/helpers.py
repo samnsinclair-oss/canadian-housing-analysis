@@ -64,11 +64,11 @@ def add_tenure_group(df):
     return df
 
 def simplify_tenure(df):
-    """Shorten tenure labels while keeping important meaning.
+    """Shorten tenure labels while keeping important meaning
         Parameters:
             df: A pandas DataFrame
         Returns:
-            DataFrame with a simplified tenure column.
+            DataFrame with a simplified tenure column
     """
     df = df.copy()
 
@@ -80,6 +80,22 @@ def simplify_tenure(df):
         "Renter household": "Renter",
         "Renter not in social and affordable housing": "Renter (Non-social)",
         "Renter in social and affordable housing": "Renter (Social)"
+    })
+
+    return df
+
+def simplify_housing_status(df):
+    """Shorten housing status labels
+        Parameters:
+            df: A pandas DataFrame
+        Returns:
+            DataFrame with a simplified tenure column
+    """
+    df = df.copy()
+
+    df["Housing Status"] = df["Housing Status"].replace({
+        "Does not live in acceptable housing": "Not Acceptable",
+        "Lives in acceptable housing": "Acceptable"
     })
 
     return df
