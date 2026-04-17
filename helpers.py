@@ -102,3 +102,32 @@ def simplify_housing_status(df):
     })
 
     return df
+
+def filter_provinces(df):
+    """Return only the provincial rows from the dataset.
+    Parameters:
+        df: A Pandas Dataframe
+    Returns:
+        Dataframe containing only province rows.
+    """
+    df = df.copy()
+
+    provinces = [
+        "Newfoundland and Labrador",
+        "Prince Edward Island",
+        "Nova Scotia",
+        "New Brunswick",
+        "Quebec",
+        "Ontario",
+        "Manitoba",
+        "Saskatchewan",
+        "Alberta",
+        "British Columbia"]
+    
+    df = df[df["Region"].isin(provinces)]
+    
+    return df
+
+
+
+    
